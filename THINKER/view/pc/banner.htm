@@ -1,0 +1,18 @@
+<!--判断后台是否有输出图片，没有则显示默认图片开始-->
+<div class="bg_inner" 
+{assign name='toplitpic' value='$thinker.field.typeid|gettoptype=###,"litpic"'}
+{empty name='$toplitpic'}
+style="background: url({global name='web_templets_pc' /}/skin/img/cate_bg_{$thinker.field.typeid|gettoptype=###,'id'}.jpg) center center no-repeat;"
+{else /}
+style="background: url({$thinker.field.typeid|gettoptype=###,'litpic'}) center center no-repeat;"
+{/empty}
+ >
+ <!--判断后台是否有输出图片，没有则显示默认图片结束-->
+  <div class="banner_inner width" >
+    <div class="con">{$thinker.field.typename}<span>{$thinker.field.englist_name}</span>
+    </div>
+  </div>
+</div>
+
+
+

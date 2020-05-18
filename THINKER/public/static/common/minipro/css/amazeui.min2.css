@@ -1,0 +1,22 @@
+.left-sidebar .left-sidebar-second .sidebar-second-title {
+    height: 60px;
+    line-height: 60px;
+    padding-left:30px;
+    font-size: 14px;
+}
+.left-sidebar .left-sidebar-second .sidebar-second-item a {
+    min-height: 40px;
+    line-height: 40px;
+    padding-left:30px;
+	font-size: 13px;
+}
+.left-sidebar .left-sidebar-second .sidebar-second-item .sidebar-third-item a .iconfont.icon-caret {
+    position: absolute;
+    left: 10px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    font-size: 13px;
+}
+.left-sidebar .left-sidebar-second .sidebar-second-item .sidebar-third-item .sidebar-third-nav-sub a {
+    padding-left:30px;
+}

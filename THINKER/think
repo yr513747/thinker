@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+namespace Thinker;
+
+// 命令行入口文件
+// 加载基础文件
+require __DIR__ . '/Thinker/base.php';
+
+// 应用初始化
+AppLication::runWithSubObject('console');
+// (new App())->console->run();

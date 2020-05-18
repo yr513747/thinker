@@ -1,0 +1,5 @@
+<?php
+return [
+    /* 密码加密串,安装后不可更改，格式base64 */
+    'securekey' => "GKijdVz5ncsQnudu1GKULfApIOcjYkml5dxUgZoDvwg",
+];

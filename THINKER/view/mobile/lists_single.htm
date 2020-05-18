@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<!--页面seo标题-->
+<title>{$thinker.field.seo_title}</title>
+<!--页面seo描述-->
+<meta name="description" content="{$thinker.field.seo_description}" />
+<!--页面seo关键词-->
+<meta name="keywords" content="{$thinker.field.seo_keywords}" />
+<!--网站地址栏图标-->
+<link href="{global name='web_cmspath' /}/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+{static file="skin/css/amazeui.min.css" /}
+{static file="skin/css/app.css" /}
+{static file="skin/js/jquery.min.js" /}
+{static file="skin/js/amazeui.min.js" /}
+{static file="skin/js/app.js" /}
+</head>
+<body>
+<!--网站公用头部——开始-->
+{include file="header.htm" /}
+<!--网站公用头部——结束-->
+<div class="nav am-offcanvas" id="nav">
+  <div class="am-offcanvas-bar am-offcanvas-bar-flip">
+    <ul id="collapase-nav">
+      {channel type="first" row='10'}
+      <li class="am-panel"><a href="{$field.typeurl}" title="{$field.typename}">{$field.typename}</a>
+        <ul class="am-collapse" id="nav_{$i}">
+        </ul>
+      </li>
+     {/channel}  
+    </ul>
+  </div>
+</div>
+<article>
+  <section>
+    <div class="subject"> 
+    {gt name='$thinker.field.grade' value='0'}
+    	<span class="more"><a href="javascript:;" class="am-icon-bars am-icon-sm" data-am-offcanvas="{target:'#nav'}"></a></span>
+    {else /}
+		{notempty name="$thinker.field.has_children"}
+		<span class="more"><a href="javascript:;" class="am-icon-bars am-icon-sm" data-am-offcanvas="{target:'#nav'}"></a></span>
+		{/notempty}
+    {/gt}
+    <b>{$thinker.field.typename}</b> </div>
+    <div class="clear"></div>
+    <div class="about">
+      {$thinker.field.content} 
+    </div>
+  </section>
+</article>
+<!--网站公用底部——开始-->
+{include file="footer.htm" /}
+<!--网站公用底部——结束-->
+</body>
+</html>

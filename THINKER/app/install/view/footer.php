@@ -1,0 +1,1 @@
+<div class="footer"> Powered by  <a href="http://www.thinker.com" target="_blank">Thinker</a></div>

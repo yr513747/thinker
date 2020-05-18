@@ -1,0 +1,41 @@
+[2020-05-03T11:16:55+08:00][sql] CONNECT:[ UseTime:0.001676s ] mysql:host=127.0.0.1;port=3306;dbname=thinker;charset=utf8
+[2020-05-03T11:16:55+08:00][error] [10501]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'thinker.thinker_channeltype' doesn't exist[E:\phpstudy_pro\THINKER\vendor\topthink\think-orm\src\db\PDOConnection.php:722]
+[2020-05-03T11:18:59+08:00][sql] CONNECT:[ UseTime:0.001619s ] mysql:host=127.0.0.1;port=3306;dbname=thinker;charset=utf8
+[2020-05-03T11:18:59+08:00][error] [10501]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'thinker.thinker_config' doesn't exist[E:\phpstudy_pro\THINKER\vendor\topthink\think-orm\src\db\PDOConnection.php:722]
+[2020-05-03T11:19:47+08:00][info] [ DISPATCH_DEBUGINFO_dispatch ] array (
+  0 => 'install',
+  1 => 'Index',
+  2 => 'step2',
+)
+[2020-05-03T11:19:47+08:00][info] [ DISPATCH_DEBUGINFO_param ] array (
+)
+[2020-05-03T11:19:47+08:00][info] [ DISPATCH_DEBUGINFO_header ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=93c99d377f19ab350d72d5878b656ee9',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://thinker/install/Index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'thinker',
+)
+[2020-05-03T11:19:47+08:00][info] [ DISPATCH_DEBUGINFO_rule ] array (
+  'name' => NULL,
+  'rule' => NULL,
+  'route' => NULL,
+  'method' => NULL,
+  'vars' => 
+  array (
+  ),
+  'option' => 
+  array (
+    'remove_slash' => true,
+  ),
+  'pattern' => 
+  array (
+  ),
+)
+[2020-05-03T11:19:47+08:00][sql] CONNECT:[ UseTime:0.001599s ] mysql:host=127.0.0.1;port=3306;dbname=thinker;charset=utf8
+[2020-05-03T11:19:47+08:00][error] [10501]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'thinker.thinker_config' doesn't exist[E:\phpstudy_pro\THINKER\vendor\topthink\think-orm\src\db\PDOConnection.php:722]

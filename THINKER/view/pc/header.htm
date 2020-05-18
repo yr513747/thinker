@@ -1,0 +1,61 @@
+
+
+<div class="top">
+  <div class="width">
+	<div class="user">
+		{user type='open'}
+		{user type='cart'}
+        <a href="{$field.url}" id="{$field.id}" >购物车</a>
+         {$field.hidden}
+        {/user}
+		{user type='login'}
+		<a href="{$field.url}" id="{$field.id}">登录</a>　
+		 {$field.hidden}
+		{/user}
+		{user type='reg'}
+		<a href="{$field.url}" id="{$field.id}">注册</a> 
+		 {$field.hidden}
+		{/user}
+		{user type='logout'}
+		<a href="{$field.url}" id="{$field.id}">退出</a> 
+		 {$field.hidden}
+		{/user}
+		{/user}
+	</div>	
+  </div>
+</div>
+ <div class="width header">
+  <div class="fl"><a href="{global name='web_cmsurl' /}"><img src="{global name='web_logo' /}" alt="{global name='web_name' /}"></a></div>
+  <div class="fr">
+     <div class="tel">{global name='web_attr_1' /}</div>
+    
+    </div>
+  <div class="clear"></div>
+</div>
+    
+<div class="bg_nav">
+        <div class="width">
+        	<ul class="nav">
+             <li class="{eq name='$Request.param.m' value='Index'}hover{/eq}"><a href="{global name='web_cmsurl' /}" title="首页">首页</a></li>
+			 {channel type="top" row="60" id="field" currentstyle="hover"}
+			 <li class="{$field.currentstyle}"><a href="{$field.typeurl}">{$field.typename}</a>
+			  {notempty name="$field.children"}
+			  <ul class="subnav">
+			    {channel name="$field.children" row="100" id="field2"}
+				 <li><a href="{$field2.typeurl}">{$field2.typename}</a>
+	             {notempty name="$field2.children"}
+		            <ul class="subnav2">
+						{channel name="$field2.children" row="100" id="field3"}
+						 <li><a href="{$field2.typeurl}">{$field3.typename}</a> </li>
+						{/channel}   
+		            </ul> 
+		         {/notempty}  
+		         </li>
+			    {/channel}   
+			  </ul>
+			 {/notempty}
+			 </li>
+		 	 {/channel}
+            </ul>
+        </div>
+</div>

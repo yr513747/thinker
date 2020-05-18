@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<!--页面seo标题-->
+<title>{$thinker.field.seo_title}</title>
+<!--页面seo描述-->
+<meta name="description" content="{$thinker.field.seo_description}" />
+<!--页面seo关键词-->
+<meta name="keywords" content="{$thinker.field.seo_keywords}" />
+<!--网站地址栏图标-->
+<link href="{global name='web_cmspath' /}/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+{static file="skin/css/amazeui.min.css" /}
+{static file="skin/css/app.css" /}
+{static file="skin/js/jquery.min.js" /}
+{static file="skin/js/amazeui.min.js" /}
+{static file="skin/js/app.js" /}
+</head>
+
+<body>
+<!--网站公用头部——开始-->
+{include file="header.htm" /}
+<!--网站公用头部——结束-->
+<article>
+  <section>
+    <div class="dow_show">
+      <!--文章标题-->
+      <h1>{$thinker.field.title}</h1>
+      <div class="info">日期：{$thinker.field.add_time|MyDate='Y-m-d',###}　点击数：{arcclick /}  <a class="return" href="{$thinker.field.typeurl}">返回列表</a></div>
+      <div class="xia">文件下载列表 : 
+       {volist name="$thinker.field.file_list" id="field"}
+        <span class="xiazai"><a href="{$field.downurl}" title="{$field.title}">{lang name='yybl10' /}({$i})</a></span>
+       {/volist}
+      </div>
+      <div class="intro"> 
+       <!--文章主体-->
+       {$thinker.field.content}
+        <div class="clear"></div>
+      </div>
+      <!--上下篇——开始-->
+      <div class="prenext"> 
+        <!--上一篇--> 
+        {prenext get='pre'} <a href="{$field.arcurl}" title="{$field.title}" class="pre"> {lang name='sys11' /}</span> </a> {else /} <a class="pre">{lang name='sys10' /}</a> {/prenext} 
+        <!--下一篇--> 
+        {prenext get='next'} <a href="{$field.arcurl}" title="{$field.title}" class="next"> {lang name='sys12' /} </span> </a> {else /} <a class="next">{lang name='sys10' /}</a> {/prenext} 
+      </div>
+      <!--上下篇——结束-->
+       {notempty name='$thinker.field.tags'}
+      <hr class="am-margin-top-lg">
+      <!--tag标签——开始-->
+      <div class="tags">标签：
+        {tag sort='now' getall='0' row='100'} <a href="{$field.link}"  {$field.target}>{$field.tag}</a> {/tag} 
+      </div>
+      <!--tag标签——结束--> 
+      {/notempty}
+    </div>
+  </section>
+  <section>
+    <div class="subject"> <b>随便看看</b> </div>
+    <div class="clear"></div>
+    <ul class="home_news">
+      {arclist orderby='rand' titlelen='30' row='4'}
+      <li><span class="date">{$field.add_time|MyDate='m-d',###}</span>
+        <div class="right"><a href="{$field.arcurl}" title="{$field.title}" class="text-hide">{$field.title}</a>
+          <p class="text-hide">{$field.seo_description|html_msubstr=###,0,60,true}</p>
+        </div>
+      </li>
+      {/arclist}
+    </ul>
+    <div class="clear"></div>
+  </section>
+</article>
+<!--网站公用底部——开始-->
+{include file="footer.htm" /}
+<!--网站公用底部——结束-->
+</body>
+</html>

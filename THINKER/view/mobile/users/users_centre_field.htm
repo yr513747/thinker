@@ -1,0 +1,177 @@
+{volist name="$users_para" id="vo"}
+        {switch name="vo.dtype"}
+            {case value="hidden"}
+                <!-- 隐藏域 start -->
+                <div class="row" style="display: none;">
+                    <dt class="tit">
+                        &nbsp;&nbsp;<label>{$vo.title}</label>
+                    </dt>
+                    <dd class="opt">
+                        <input type="hidden" class="input-txt" id="{$vo.fieldArr}_{$vo.name|default=''}" name="{$vo.fieldArr}[{$vo.name|default=''}]" value="{$vo.dfvalue|default=''}">
+                        <span class="err"></span>
+                        <p class="notic">{$vo.remark|default=''}</p>
+                    </dd>
+                </div>
+                <!-- 隐藏域 start -->
+            {/case}
+
+            {case value="mobile"}
+                <!-- 手机文本框 start -->
+                {include file="/template/users/users_centre_field_mobile.htm" /}
+                <!-- 手机文本框 end -->
+            {/case}
+
+            {case value="email"}
+                <!-- 邮箱文本框 start -->
+                <div class="row">
+                <div class="col-xs-3">{$vo.title}</div>
+                    <div class="col-xs-9">
+                        {$vo.dfvalue|default=''}
+                        {eq name='is_mobile' value='1'}
+                            <!-- 手机端 -->
+                            {eq name='$users.is_email' value='1'}
+                                <span class="err"><a href="JavaScript:void(0);" onclick="BindEmailMobile('更改邮箱');">（更改邮箱）</a></span>
+                            {else/}
+                                <span class="err"><a href="JavaScript:void(0);" onclick="BindEmailMobile('绑定邮箱');">（绑定邮箱）</a></span>
+                            {/eq}
+
+                        {else/}
+                            <!-- PC端 -->
+                            {eq name='$users.is_email' value='1'}
+                                <span class="err"><a href="JavaScript:void(0);" onclick="get_{$vo.fieldArr}{$vo.name|default=''}_email_code('更改邮箱');">（更改邮箱）</a></span>
+                            {else/}
+                                <span class="err"><a href="JavaScript:void(0);" onclick="get_{$vo.fieldArr}{$vo.name|default=''}_email_code('绑定邮箱');">（绑定邮箱）</a></span>
+                            {/eq}
+                            
+                        {/eq}
+                        <p class="notic">{$vo.remark|default=''}</p>
+                    </div>
+                </div>
+                {eq name='is_mobile' value='2'}
+                    <script type="text/javascript">
+                        function get_{$vo.fieldArr}{$vo.name|default=''}_email_code(title)
+                        {
+                            var url = "{url link='user/Users/bind_email'/}";
+                            if (url.indexOf('?') > -1) {
+                                url += '&';
+                            } else {
+                                url += '?';
+                            }
+                            url += 'title='+title;
+                            //iframe窗
+                            layer.open({
+                                type: 2,
+                                title: title,
+                                shadeClose: false,
+                                maxmin: false, //开启最大化最小化按钮
+                                area: ['350px', '300px'],
+                                content: url
+                            });
+                        }
+                    </script>
+                {/eq}
+                <!-- 邮箱文本框 end -->
+            {/case}
+
+            {case value="text"}
+                <!-- 单行文本框 start -->
+                <div class="row">
+                    <div class="col-xs-3">{$vo.title}</div>
+                    <div class="col-xs-9">
+                        {if condition="1 == $vo.is_required"}
+                            <span class="redx">*</span>
+                        {else/}
+                            <span class="redx">&nbsp;</span>
+                        {/if}
+                        <input type="text" class="input-txt" id="{$vo.fieldArr}_{$vo.name|default=''}" name="{$vo.fieldArr}[{$vo.name|default=''}]" value="{$vo.dfvalue|default=''}">{$vo.dfvalue_unit|default=''}
+                        <span class="err"></span>
+                        <p class="notic">{$vo.remark|default=''}</p>
+                    </div>
+                </div>
+                <!-- 单行文本框 end -->
+            {/case}
+
+            {case value="multitext"}
+                <!-- 多行文本框 start -->
+                <div class="row">
+                    <div class="col-xs-3">{$vo.title}</div>
+                    <div class="col-xs-9">
+                        {if condition="1 == $vo.is_required"}
+                            <span class="redx">*</span>
+                        {else/}
+                            <span class="redx">&nbsp;</span>
+                        {/if}
+                        <textarea id="{$vo.fieldArr}_{$vo.name|default=''}" name="{$vo.fieldArr}[{$vo.name|default=''}]">{$vo.dfvalue|default=''}</textarea>
+                        <span class="err"></span>
+                        <p class="notic">{$vo.remark|default=''}</p>
+                    </div>
+                </div>
+                <!-- 多行文本框 end -->
+            {/case}
+
+            {case value="checkbox"}
+                <!-- 复选框 start -->
+                <div class="row">
+                    <div class="col-xs-3">{$vo.title}</div>
+                    <div class="col-xs-9">
+                        {volist name="$vo.dfvalue" id="v2"}
+                        <div class="checkbox-custom checkbox-primary">
+                        <input type="checkbox" name="{$vo.fieldArr}[{$vo.name|default=''}][]" value="{$v2}" {if condition="isset($vo['trueValue']) AND in_array($v2, $vo['trueValue'])"}checked="checked"{/if}><label>{$v2}</label>
+                        </div>
+                        {/volist}
+                        {if condition="1 == $vo.is_required"}
+                            （必选）
+                        {/if}
+                        <span class="err"></span>
+                        <p class="notic">{$vo.remark|default=''}</p>
+                        
+                    </div>
+                </div>
+                <!-- 复选框 end -->
+            {/case}
+
+            {case value="radio"}
+                <!-- 单选项 start -->
+                <div class="row">
+                    <div class="col-xs-3">{$vo.title}</div>
+                    <div class="col-xs-9">
+                        {volist name="$vo.dfvalue" id="v2"}
+                        <div class="radio-custom radio-primary">
+                        <input type="radio" name="{$vo.fieldArr}[{$vo.name|default=''}]" value="{$v2}" {if condition="isset($vo['trueValue']) AND in_array($v2, $vo['trueValue'])"}checked="checked"{/if}><label>{$v2}</label>
+                        </div>
+                        {/volist}
+                        {if condition="1 == $vo.is_required"}
+                            （必选）
+                        {/if}
+                        <span class="err"></span>
+                        <p class="notic">{$vo.remark|default=''}</p>
+                    </div>
+                </div>
+                <!-- 单选项 end -->
+            {/case}
+
+            {case value="select"}
+                <!-- 下拉框 start -->
+                <div class="row">
+                    <div class="col-xs-3">{$vo.title}</div>
+                    <div class="col-xs-9">
+                        <select name="{$vo.fieldArr}[{$vo.name|default=''}]" id="{$vo.fieldArr}_{$vo.name|default=''}">
+                            <option value="">请选择</option>
+                            {volist name="$vo.dfvalue" id="v2"}
+                                <option value="{$v2}" {if condition="isset($vo['trueValue']) AND in_array($v2, $vo['trueValue'])"}selected{/if}>{$v2}</option>
+                            {/volist}
+                        </select>
+                            {if condition="1 == $vo.is_required"}
+                                <span class="redx" style="float:none">*</span>
+                            {/if}
+                        <span class="err"></span>
+                        <p class="notic">{$vo.remark|default=''}</p>
+                    </div>
+                </div>
+                <!-- 下拉框 end -->
+            {/case}
+            <!-- 扩展 start -->
+            {include file="/template/users/users_centre_field_extend.htm" /}
+            <!-- 扩展 end -->
+        {/switch}
+{/volist}
